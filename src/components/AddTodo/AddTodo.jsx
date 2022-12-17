@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import uuid from "uuid";
+import { v4 } from "uuid";
 
 function AddTodo({ todo, setTodo }) {
   const [value, setValue] = useState("");
@@ -10,10 +10,11 @@ function AddTodo({ todo, setTodo }) {
     setTodo([
       ...todo,
       {
-        id: uuid.v4(),
+        id: v4(),
         title: value,
       },
     ]);
+    setValue("");
   }
   return (
     <div>
