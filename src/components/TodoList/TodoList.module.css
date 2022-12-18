@@ -1,0 +1,17 @@
+.btn {
+  margin-right: 18px;
+}
+
+.listItems {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 30px;
+  padding: 6px;
+  font-size: 18px;
+}
+
+.listItems:hover {
+  background: #ff9797;
+  border-radius: 7px;
+}

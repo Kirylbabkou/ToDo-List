@@ -1,4 +1,8 @@
 import { React, useState } from "react";
+import { Button } from "react-bootstrap";
+import s from "./TodoList.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSave, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 function TodoList({ todo, setTodo }) {
   const [edit, setEdit] = useState(null);
@@ -28,42 +32,37 @@ function TodoList({ todo, setTodo }) {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div>
       {todo.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className={s.listItems}>
           {edit === item.id ? (
             <div>
               <input value={value} onChange={(e) => setValue(e.target.value)} />
             </div>
           ) : (
-            <div
-              style={{
-                color: "white",
-
-                backgroundColor: "#44014C",
-              }}
-            >
-              {item.title}
-            </div>
+            <div>{item.title}</div>
           )}
 
           {edit === item.id ? (
             <div>
-              <button onClick={() => saveTodo(item.id)}>Save</button>
-              <button onClick={() => deleteTodo(item.id)}>Del</button>
+              <Button onClick={() => saveTodo(item.id)} className={s.btn}>
+                <FontAwesomeIcon icon={faSave} /> Save
+              </Button>
+              <Button onClick={() => deleteTodo(item.id)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </Button>
             </div>
           ) : (
             <div>
-              <button onClick={() => editTodo(item.id, item.title)}>
-                Edit
-              </button>
-              <button onClick={() => deleteTodo(item.id)}>Del</button>
+              <Button
+                onClick={() => editTodo(item.id, item.title)}
+                className={s.btn}
+              >
+                <FontAwesomeIcon icon={faEdit} /> Edit
+              </Button>
+              <Button onClick={() => deleteTodo(item.id)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </Button>
             </div>
           )}
         </div>
